@@ -21,7 +21,12 @@
     <jacoco.unit-tests.limit.method-complexity>5</jacoco.unit-tests.limit.method-complexity>
   </properties>
   <dependencies>
-    
+
+      <dependency>
+        <groupId>net.pwall.json</groupId>
+        <artifactId>json-simple</artifactId>
+        <version>1.5.5</version>
+      </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
