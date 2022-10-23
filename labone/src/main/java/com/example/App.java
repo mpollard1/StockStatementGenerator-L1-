@@ -13,6 +13,7 @@ public final class App {
     }
 
     public static void main(String[] args) {
+        
         System.out.println(testAccountInfo(testAccount()));
         
         
@@ -44,6 +45,7 @@ public final class App {
         return account;
     }
     static void ReadJson(){
+        //Will not read stock.json ughhhhhhhhhhhhh
         JSONParser jsonParser = new JSONParser();
 
         try(FileReader reader = new FileReader("stock.json")){
