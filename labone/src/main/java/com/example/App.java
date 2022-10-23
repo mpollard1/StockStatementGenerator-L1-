@@ -1,15 +1,48 @@
 package com.example;
 import com.aspose.cells.Workbook;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 public final class App {
     private App() {
     }
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
         
         
         
+    }
+
+    static void ReadJson(){
+        JSONParser jsonParser = new JSONParser();
+
+        try(FileReader reader = new FileReader("stock.json")){
+            Object obj = jsonParser.parse(reader);
+
+            JSONArray accountList = (JSONArray) obj;
+            System.out.println(accountList);
+
+            accountList.forEach(acc -> parseAccountObject((JSONObject) acc));
+
+        }catch(FileNotFoundException e){
+            e.printStackTrace();
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(ParseException e){
+            e.printStackTrace();
+        }
+
+    }
+
+    static void parseAccountObject( JSONObject account){
+        JSONObject accountObject = (JSONObject) account.get("account");
+
+        String firstName = (String) accountObject.get("firstName");
     }
 
     static int BuyCash(int begBal, int total){
