@@ -3,11 +3,11 @@ package com.example;
 public class Transaction {
     private String type;
     private String stockSymbol;
-    private int pricePerShare;
+    private double pricePerShare;
     private int countShares;
-    private int totalTransaction;
-    private int totalStockValue;
-    private int totalCashValue;
+    private double totalTransaction;
+    private double totalStockValue;
+    private double totalCashValue;
     public void setType(String typeStr){
         type = typeStr;
     }
@@ -24,11 +24,11 @@ public class Transaction {
         return stockSymbol;
     }
 
-    public void setPricePerShare(int pricePerShareStr){
+    public void setPricePerShare(double pricePerShareStr){
         pricePerShare = pricePerShareStr;
     }
 
-    public int getPricePerShare(){
+    public double getPricePerShare(){
         return pricePerShare;
     }
 
@@ -40,16 +40,16 @@ public class Transaction {
         return countShares;
     }
 
-    public void setTotalTrans(int shareCount, int countPrice){
-        int total = shareCount * countPrice;
+    public void setTotalTrans(int shareCount, double countPrice){
+        double total = shareCount * countPrice;
         totalTransaction = total;
     }
 
-    public int getTotalTrans(){
+    public double getTotalTrans(){
         return totalTransaction;
     }
 
-    public void setCashTotal(int totalTransaction, int begBal, String stockType){
+    public void setCashTotal(double totalTransaction, double begBal, String stockType){
         if(stockType == "Sell"){
             totalCashValue = begBal + totalTransaction;
         }else if(stockType == "Buy"){
@@ -57,11 +57,11 @@ public class Transaction {
         }
     }
 
-    public int getCashTotal(){
+    public double getCashTotal(){
         return totalCashValue;
     }
 
-    public void setStockTotal(int totalTransaction, String stockType){
+    public void setStockTotal(double totalTransaction, String stockType){
         totalStockValue = 0;
         if(stockType == "Sell"){
             totalStockValue = totalStockValue - totalTransaction;
@@ -70,7 +70,7 @@ public class Transaction {
         }
     }
 
-    public int getStockTotal(){
+    public double getStockTotal(){
         return totalStockValue;
     }
 

@@ -12,7 +12,7 @@ public class Account {
     private String lastName;
     private String email;
     private String phoneNumber;
-    private int begBal;
+    private double begBal;
     private List<Transaction> transactions = new ArrayList<Transaction>();
 
     public void setAccountNum(int accNum){
@@ -63,11 +63,11 @@ public class Account {
         return phoneNumber;
     }
 
-    public void setBeginningBal(int bal){
+    public void setBeginningBal(double bal){
         begBal = bal;
     }
 
-    public int getBeginningBal(){
+    public double getBeginningBal(){
         return begBal;
     }
 
@@ -75,7 +75,17 @@ public class Account {
         transactions.add(trans);
     }
 
-    public List<Transaction> getTransactions(){
+    public List<Transaction> getTransactionsList(){
         return transactions;
+    }
+
+    public StringBuilder getTransactions(){
+        StringBuilder tranString = new StringBuilder("Transactions: ");
+        for (Transaction transaction : transactions) {
+            tranString.append("{ Type: " + transaction.getStockSymbol() + " Symbol: " + transaction.getStockSymbol() + " PricePerShare: " + transaction.getPricePerShare() + " Share Count: " + transaction.getShareCount() + " Total Transaction: " + transaction.getTotalTrans() + " Total Stock Value: " + transaction.getStockTotal() + " Total Cash Value: " + transaction.getCashTotal() + " },");
+            
+        }
+
+        return tranString;
     }
 }
