@@ -6,8 +6,8 @@ public class Transaction {
     private int pricePerShare;
     private int countShares;
     private int totalTransaction;
-
-
+    private int totalStockValue;
+    private int totalCashValue;
     public void setType(String typeStr){
         type = typeStr;
     }
@@ -49,5 +49,29 @@ public class Transaction {
         return totalTransaction;
     }
 
+    public void setCashTotal(int totalTransaction, int begBal, String stockType){
+        if(stockType == "Sell"){
+            totalCashValue = begBal + totalTransaction;
+        }else if(stockType == "Buy"){
+            totalCashValue = begBal - totalTransaction;
+        }
+    }
+
+    public int getCashTotal(){
+        return totalCashValue;
+    }
+
+    public void setStockTotal(int totalTransaction, String stockType){
+        totalStockValue = 0;
+        if(stockType == "Sell"){
+            totalStockValue = totalStockValue - totalTransaction;
+        }else if(stockType == "Buy"){
+            totalStockValue = totalStockValue + totalTransaction;
+        }
+    }
+
+    public int getStockTotal(){
+        return totalStockValue;
+    }
 
 }

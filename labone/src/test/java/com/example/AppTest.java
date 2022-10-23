@@ -14,25 +14,28 @@ class AppTest {
 
     @Test
     void testCashBuy(){
-        assertEquals(20, App.BuyCash(21,1));
+        Transaction trans = new Transaction();
+        trans.setCashTotal(20, 50, "Buy");
+        assertEquals(30, trans.getCashTotal());
     }
+
     @Test
     void testCashSell(){
-        assertEquals(20, App.SellCash(19,1));
+        Transaction trans = new Transaction();
+        trans.setCashTotal(20, 50, "Sell");
+        assertEquals(70, trans.getCashTotal());
     }
 
     @Test
-    void testTotalCash(){
-        assertEquals(20, App.CashTotal(5,4));
+    void testStockBuy(){
+        Transaction trans = new Transaction();
+        trans.setStockTotal(20, "Buy");
+        assertEquals(20, trans.getStockTotal());
     }
-
     @Test
-    void testStockTotalSell(){
-        assertEquals(20, App.StockTotal("Sell",1, 21));
-    }
-
-    @Test
-    void testStockTotalBuy(){
-        assertEquals(20, App.StockTotal("Buy", 1, 19));
+    void testStockSell(){
+        Transaction trans = new Transaction();
+        trans.setStockTotal(20, "Sell");
+        assertEquals(-20, trans.getStockTotal());
     }
 }
